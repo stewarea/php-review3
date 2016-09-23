@@ -1,0 +1,20 @@
+1. Test input of Stylist fields to getStylist:
+Input: Debra;
+Output: Debra;
+
+2. Test id given to Stylist at creation:
+Input: Debra;
+Output: 1;
+
+3. test save function
+input: Debra;
+output: Debra[0];
+
+4. Display all Stylists on main page with getAll
+Input: Debra
+Input: Simone
+Output: Debra, Simone:
+
+5. Delete all stylists
+Input: Delete;
+Output: null;
