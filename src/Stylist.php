@@ -1,5 +1,5 @@
 <?php
-    class Stylists
+    class Stylist
     {
         private $name;
         private $id;
@@ -36,7 +36,7 @@
             foreach($returned_stylists as $stylist) {
                 $name = $stylist['name'];
                 $id = $stylist['id'];
-                $new_stylists = new Stylists($name, $id);
+                $new_stylists = new Stylist($name, $id);
                 array_push($stylists, $new_stylists);
             }
             return $stylists;
@@ -48,7 +48,7 @@
         static function find($search_id)
         {
             $found_stylists = null;
-            $stylists = Stylists::getAll();
+            $stylists = Stylist::getAll();
             foreach($stylists as $stylist) {
                 $stylist_id = $stylist->getId();
                 if($stylist_id == $search_id) {
@@ -62,6 +62,10 @@
         {
             $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getId()};");
             $this->setName($new_name);
+        }
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
 }
  ?>
