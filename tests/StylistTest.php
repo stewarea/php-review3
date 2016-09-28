@@ -14,15 +14,16 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
-        protected function tearDown()
-        {
-            // Stylist::deleteAll();
-        }
+        // protected function tearDown()
+        // {
+        //     Stylist::deleteAll();
+        // }
         function test_getName()
         {
             //Arrange
+            $id = null;
             $name = "Debra";
-            $test_Stylist = new Stylist($name);
+            $test_Stylist = new Stylist($id, $name);
             //Act
             $result = $test_Stylist->getName();
 
@@ -36,11 +37,11 @@
             {
             //Arrange
             $name = "Debra";
-            $id = 1;
-            $test_Stylist = new Stylist($name, $id);
-
+            $id = null;
+            $test_Stylist = new Stylist($id, $name);
+            $test_Stylist->save();
             //Act
-            $result = $test_Stylist->getID();
+            $result = $test_Stylist->getId();
 
             //ASsert
             $this->assertEquals(true, is_numeric($result));
@@ -48,11 +49,13 @@
         function test_getAll()
         {
             //Arrange
+            $id = null;
             $name = "Debra";
+            $id1 = null;
             $name1 = "Simone";
-            $test_Stylist = new Stylist($name);
+            $test_Stylist = new Stylist($id, $name);
             $test_Stylist->save();
-            $test_Stylist1 = new Stylist($name1);
+            $test_Stylist1 = new Stylist($id1, $name1);
             $test_Stylist1->save();
 
             //Act
@@ -64,8 +67,9 @@
         function test_save()
         {
             //Arrange
+            $id = null;
             $name = "Simone";
-            $test_Category = new Stylist($name);
+            $test_Category = new Stylist($id, $name);
             $test_Category->save();
 
             //Act
@@ -78,11 +82,13 @@
         function test_find()
         {
             //Arrange
+            $id = null;
             $name = "Debra";
+            $id1 = null;
             $name1 = "Simone";
-            $test_Stylist = new Stylist($name);
+            $test_Stylist = new Stylist($id, $name);
             $test_Stylist->save();
-            $test_Stylist1 = new Stylist($name1);
+            $test_Stylist1 = new Stylist($id1, $name1);
             $test_Stylist1->save();
 
             //Act
@@ -96,7 +102,7 @@
             //Arrange
             $name = "Debra";
             $id = null;
-            $test_Stylist = new Stylist($name, $id);
+            $test_Stylist = new Stylist($id, $name);
             $test_Stylist->save();
 
             $new_name = "Beard";
@@ -112,11 +118,12 @@
             //Arrange
             $name = "Debra";
             $id = null;
-            $test_Stylist = new Stylist($name, $id);
+            $test_Stylist = new Stylist($id, $name);
             $test_Stylist->save();
 
             $name1 = "Simone";
-            $test_Stylist1 = new Stylist($name1, $id);
+            $id1 = null;
+            $test_Stylist1 = new Stylist($id, $name1);
             $test_Stylist1->save();
 
             //Act
