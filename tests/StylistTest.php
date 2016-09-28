@@ -4,10 +4,10 @@
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
-
+    require_once "src/Client.php";
     require_once "src/Stylist.php";
 
-    $server = 'mysql:host=localhost;dbname=hair_salon_test';
+    $server = 'mysql:host=localhost:8889dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -16,7 +16,7 @@
     {
         protected function tearDown()
         {
-            Stylist::deleteAll();
+            // Stylist::deleteAll();
         }
         function test_getName()
         {
@@ -61,6 +61,20 @@
             //Assert
             $this->assertEquals([$test_Stylist, $test_Stylist1], $result);
         }
+        function test_save()
+        {
+            //Arrange
+            $name = "Simone";
+            $test_Category = new Stylist($name);
+            $test_Category->save();
+
+            //Act
+            $result = Stylist::getAll();
+
+            //Assert
+            $this->assertEquals($test_Category, $result[0]);
+        }
+
         function test_find()
         {
             //Arrange

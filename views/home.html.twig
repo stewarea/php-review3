@@ -6,11 +6,29 @@
   </head>
   <body>
     <h1>Stylists</h1>
-    <form action='/results' method='post'>
-      <label for='stylist'></label>
-      <input type='text' id='stylist' name='stylist'>
-      <button type='submit'>Submit</button>
-    </form>
+        {% if stylists is not empty %}
+            {% for stylist in stylists %}
+                <p>
+                    <a href="/stylist/{{stylist.id}}"{{ stlist.name }}>
+                </p>
 
+                <form class="delete" action="/delete/{{stylist.id}}" method="post">
+                    <input name="_method" type="hidden" value="delete">
+                    <button class="btn btn-danger form-control delete" type="submit" name="button">Delete </button>
+                 </form>
+                 <form class="" action="/{{stylist.id}}/edit" method="post">
+                     <label for="">Name</label>
+                     <input name="person" type="hidden" value="{{stylist.id}}">
+                     <input class="form-control" type="text" name="name" value="{{stylist.name}}">
+                     <button class="form-control btn btn-success" type="submit" name="button">Submit</button>
+                </form>
+                <form action='/results' method='post'>
+                    <label for='stylist'>Add New Stylist:</label>
+                    <input type='text' id='stylist' name='stylist'>
+                    <button type='submit'>Submit</button>
+                </form>
+
+            {% endfor %}
+        {% endif %}
   </body>
 </html>

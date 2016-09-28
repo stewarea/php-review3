@@ -8,7 +8,7 @@
 
     $app = new Silex\Application();
 
-    $server = 'mysql:host=localhost;dbname=hair_salon_test';
+    $server = 'mysql:host=localhost:8889dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -17,12 +17,14 @@
         'twig.path' => __DIR__.'/../views'
     ));
 
-    $app->get("/", function() as ($app){
+    $app->get("/", function() use ($app){
         return $app['twig']->render('home.html.twig');
     });
 
-    $app->get("/stylists", function () as ($app){
+    $app->get("/stylists", function () use ($app){
         return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
-    })
+    });
+
+    return $app;
 
  ?>

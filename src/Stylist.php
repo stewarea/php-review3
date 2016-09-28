@@ -26,7 +26,7 @@
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getName()}')");
-            $this->id = $GLOBALS['DB']->lastInsertId();
+            $this->id= $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
