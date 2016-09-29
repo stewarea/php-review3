@@ -33,23 +33,23 @@
             return $this->id;
         }
         function save(){
-            $GLOBALS['DB']->exec("INSERT INTO client (name, stylist_id) VALUES (
+            $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES (
                 '{$this->name}', {$this->stylist_id});");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         function delete(){
-            $GLOBALS['DB']->exec("DELETE FROM client where ID ={$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM clients where ID ={$this->getId()};");
         }
 
         function update($new_name){
-            $GLOBALS['DB']->exec("UPDATE client SET name = '$new_name' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '$new_name' WHERE id = {$this->getId()};");
             $this->setName($new_name);
         }
 
         static function getAll()
         {
-            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM client");
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients");
             $clients = array();
             foreach($returned_clients as $client) {
                 $id = $client['id'];
@@ -62,7 +62,7 @@
         }
 
         static function deleteAll(){
-            $GLOBALS['DB']->exec("DELETE FROM client;");
+            $GLOBALS['DB']->exec("DELETE FROM clients;");
         }
 }
 
