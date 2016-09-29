@@ -10,16 +10,16 @@
             <ul>
                 {% for stylist in stylists %}
 
-                        <li><a href="/stylists/{{ stylist.getName }}">{{ stylist.getId }}</a></li>
+                        <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName}}</a></li>
                         <form class="delete" action="/delete/{{stylist.id}}" method="post">
                             <input name="_method" type="hidden" value="delete">
-                            <button class="btn btn-danger form-control delete" type="submit" name="button">Delete Stylist </button>
+                            <button class="btn form-control delete" type="submit" name="button">Delete Stylist </button>
                         </form>
                         <form class="" action="/{{stylist.id}}/edit" method="post">
                             <label for="">Name</label>
                             <input name="person" type="hidden" value="{{stylist.id}}">
                             <input class="form-control" type="text" name="name" value="{{stylist.name}}">
-                            <button class="form-control btn btn-success" type="submit" name="button">Edit Stylist</button>
+                            <button class="form-control btn" type="submit" name="button">Edit Stylist</button>
                        </form>
                 {% endfor %}
             </ul>

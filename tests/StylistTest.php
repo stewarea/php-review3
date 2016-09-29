@@ -7,7 +7,7 @@
     require_once "src/Client.php";
     require_once "src/Stylist.php";
 
-    $server = 'mysql:host=localhost:8889dbname=hair_salon_test';
+    $server = 'mysql:host=localhost;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);

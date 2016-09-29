@@ -8,7 +8,7 @@
 
     $app = new Silex\Application();
 
-    $server = 'mysql:host=localhost:8889bname=hair_salon_test';
+    $server = 'mysql:host=localhost;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -22,7 +22,7 @@
     });
 
     $app->post("/", function() use ($app){
-        $new_stylist = new Stylist($_POST['stylist']);
+        $new_stylist = new Stylist(null, $_POST['stylist']);
         $new_stylist->save();
         return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
