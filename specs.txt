@@ -15,6 +15,14 @@ Input: Debra
 Input: Simone
 Output: Debra, Simone:
 
-5. Delete all stylists
+5. Delete individual stylists
 Input: Delete;
 Output: null;
+
+6.Edit all stylists individually
+input: Diane
+Output: Diane
+
+7. Enter clients under specific stylists:
+Input: Robert;
+Output: Robert;
