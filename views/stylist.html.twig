@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <meta charset="utf-8">
+      <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
       <title>Salon Manager</title>
     </head>
     <body>
 
-             <p> Stylist: <h1> {{ stylist.getName }}</h1>
+        <h1>Stylist: {{ stylist.getName }}</h1>
 
         <h2> Clients of {{ stylist.getName }} </h2>
         {% if clients is not empty %}
             {% for client in clients %}
 
-                    <li> {{ client.name }}></li>
+                <li><h3>{{ client.name }}</li></h3
 
 
-                <form class="delete" action="/delete/{{client.id}}" method="post">
+                <form class="" action="/stylist/{{stylist.id}}/delete/{{client.id}}" method="post">
                     <input name="_method" type="hidden" value="delete">
-                    <button class="btn btn-danger form-control delete" type="submit" name="button">Delete Client</button>
-                 </form>
-                 <form class="" action="/{{client.id}}/edit" method="post">
-                     <label for="">Edit Client</label>
-                     <input name="person" type="hidden" value="{{client.id}}">
-                     <button class="form-control btn btn-success" type="submit" name="button">Submit</button>
+                    <button class="btn btn-danger" type="submit" name="button">Delete Client</button>
+                </form>
+                <form class="" action="/stylist/{{stylist.id}}/edit/" method="post">
+                    <input name="person" type="hidden" value="{{client.id}}">
+                    <input name="_method" type="hidden" value="patch">
+                    <input type="hidden" name="stylist_id" value={{stylist.id}}>
+                    <label for="">Change Client Name:</label>
+                    <input class="form" type="text" name="name" value="">
+                    <button class="btn btn-success" type="submit" name="button">Submit</button>
                 </form>
 
             {% endfor %}

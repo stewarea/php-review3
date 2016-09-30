@@ -49,13 +49,13 @@
         $found_clients  = $found_stylist->getClients($id);
         return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients, 'stylists' => Stylist::getAll()));
     });
-    // $app->delete("/stylist/{id}/delete/{client_id}", function($id, $client_id) use ($app) {
-    //     $found_stylist = Stylist::find($id);
-    //     $new_client = Client::find($client_id);
-    //     $new_client->delete();
-    //     $found_clients =$found_stylist->getClients($id);
-    //     return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients, 'stylists' => Stylist::getAll()));
-    // });
+    $app->delete("/stylist/{id}/delete/{client_id}", function($id, $client_id) use ($app) {
+        $found_stylist = Stylist::find($id);
+        $new_client = Client::find($client_id);
+        $new_client->delete();
+        $found_clients =$found_stylist->getClients($id);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $found_stylist, 'clients' => $found_clients, 'stylists' => Stylist::getAll()));
+    });
     $app->patch("/stylist/{id}/edit/", function($id) use ($app) {
         $found_stylist = Stylist::find($id);
         $stuff = $_POST['person'];

@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
     <meta charset="utf-8">
     <title>Salon Manager</title>
   </head>
   <body>
-    <h1>Stylists</h1>
+    <h1>Salon Manager<h1>
+    <h3>Stylists</h3>
         {% if stylists is not empty %}
             <ul>
                 {% for stylist in stylists %}
 
-                        <li><a href="/stylist/{{ stylist.getId }}">{{ stylist.getName}}</a></li>
+                    <li><a href="/stylist/{{ stylist.getId }}"><h3>{{ stylist.getName}}</h3></a></li>
 
-                        <form class="delete" action="/delete/{{stylist.id}}" method="post">
-                            <input name="_method" type="hidden" value="delete">
-                            <button class="form-control delete" type="submit" name="button">Delete Stylist </button>
-                        </form>
+                    <form class="delete" action="/delete/{{stylist.id}}" method="post">
+                        <input name="_method" type="hidden" value="delete">
+                        <button class="btn btn-danger delete" type="submit" name="button">Delete </button>
+                    </form>
 
-                        <form class="edit" action="/{{stylist.id}}/edit" method="post">
-                              <input name="stylist" type="hidden" value="{{stylist.id}}">
-                              <input name="_method" type="hidden" value="patch">
-                              <input class="form-control" type="hidden" name="stylist_id" value={{stylist.id}}>
-                              <div><label for="">Edit Stylist Name</label>
-                              <input class="form-control" type="text" name="name" value="{{stylist.name}}"></div>
-                              <button class="form-control btn btn-success" type="submit" name="button">Submit Edit</button>
-                        </form>
+                    <form class="edit" action="/{{stylist.id}}/edit" method="post">
+                        <input name="stylist" type="hidden" value="{{stylist.id}}">
+                        <input name="_method" type="hidden" value="patch">
+                        <input class="form" type="hidden" name="stylist_id" value={{stylist.id}}>
+                        <div><label for="">Edit Stylist Name</label>
+                        <input class="form" type="text" name="name" value=""></br>
+                        <button class="form btn btn-success" type="submit" name="button">Submit Edit</button>
+                    </form>
                 {% endfor %}
             </ul>
         {% endif %}
