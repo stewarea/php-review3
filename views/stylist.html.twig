@@ -5,16 +5,14 @@
       <title>Salon Manager</title>
     </head>
     <body>
-        {% if stylist is not empty %}
-            {% for object in stylist %}
-              <h1> {{ stylist.getName }}</h1>
-            {% endfor %}
-        {% endif %}
-        <h1> Clients </h1>
+
+             <p> Stylist: <h1> {{ stylist.getName }}</h1>
+
+        <h2> Clients of {{ stylist.getName }} </h2>
         {% if clients is not empty %}
             {% for client in clients %}
 
-                    <li><a href="/clients/{{client.id}}">{{ client.name }}></li>
+                    <li> {{ client.name }}></li>
 
 
                 <form class="delete" action="/delete/{{client.id}}" method="post">
@@ -24,12 +22,19 @@
                  <form class="" action="/{{client.id}}/edit" method="post">
                      <label for="">Edit Client</label>
                      <input name="person" type="hidden" value="{{client.id}}">
-                     <input class="form-control" type="text" name="name" value="{{client.name}}">
                      <button class="form-control btn btn-success" type="submit" name="button">Submit</button>
                 </form>
 
             {% endfor %}
         {% endif %}
-        <a href "/">Home</a>
+
+        <h1> Add New Client </h1>
+        <form action='/stylist/{{ stylist.getId }}' method='post'>
+            <input type="hidden" name="stylist_id" value={{stylist.id}}>
+            <label for='client'>Client Name:</label>
+            <input type='text' id='client' name='client'>
+            <button type='submit'>Submit</button>
+        </form>
+        <a href="/">Home</a>
   </body>
 </html>

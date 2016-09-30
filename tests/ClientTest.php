@@ -7,7 +7,7 @@
 
     require_once "src/Client.php";
 
-    $server = 'mysql:host=localhost;dbname=hair_salon';
+    $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -62,6 +62,7 @@
             //Act
             $test_client->save();
             $result= Client::getAll();
+            // var_dump($result);
             //Assert
             $this->assertEquals($test_client, $result[0]);
         }

@@ -4,7 +4,7 @@
         private $id;
         private $name;
 
-        function __construct ($id=null, $name)
+        function __construct ($id = null, $name)
         {
             $this->id = $id;
             $this->name = $name;
@@ -53,8 +53,8 @@
                 if($stylist_id == $search_id) {
                     $found_stylists = $stylist;
                 }
-                return $found_stylists;
             }
+            return $found_stylists;
 
         }
         function update($new_name)
@@ -67,15 +67,15 @@
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
 
-        function getClients(){
+        function getClients($search_id){
             $all_clients = Client::getAll();
-            $matched_clients = array();
+            $found_clients = array();
             foreach($all_clients as $client){
                 if($client->getStylistId() == $search_id){
-                    array_push($matched_clients, $client);
+                    array_push($found_clients, $client);
                 }
             }
-            return $matched_clients;
+            return $found_clients;
         }
 
     }
