@@ -67,11 +67,11 @@
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
 
-        function getClients($search_id){
+        function getClients(){
             $all_clients = Client::getAll();
             $found_clients = array();
             foreach($all_clients as $client){
-                if($client->getStylistId() == $search_id){
+                if($client->getStylistId() == $this->id){
                     array_push($found_clients, $client);
                 }
             }

@@ -150,10 +150,11 @@
             $name1 = "Sam";
             $id1 = 2;
             $stylist_id = null;
-            $new_client = new Client($id1, $name1, $stylist_id);
-            $new_client->save();
+            $test_client = new Client($id1, $name1, $stylist_id);
+            $test_client->save();
             //Act
-            $found_clients = Stylist::getClients(2);
+            $found_clients = Stylist::find(2);
+            $found_clients->getClients();
             $result = $found_clients[0];
             //Assert
             $this->assertEquals($test_client, $result);
