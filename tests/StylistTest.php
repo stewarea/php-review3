@@ -136,28 +136,27 @@
 
         function test_getClients()
         {
-            //Arrange
-            $name = "Debra";
+            // Arrange
+            $test_Stylist = "Debra";
+            $test_name = "Simone";
+            $test_nam1 = "Charlie";
             $id = null;
-            $test_Stylist = new Stylist($id, $name);
-            $test_Stylist->save();
+            $id1 = null;
+            $id2 = null;
 
-            $name = "Beard";
-            $id = null;
-            $test_Stylist = new Stylist($id, $name);
-            $test_Stylist->save();
+            $test_stylist = new Stylist($id, $test_Stylist);
+            $test_stylist->save();
 
-            $name1 = "Sam";
-            $id1 = 2;
-            $stylist_id = null;
-            $test_client = new Client($id1, $name1, $stylist_id);
-            $test_client->save();
-            //Act
-            $found_clients = Stylist::find(2);
-            $found_clients->getClients();
-            $result = $found_clients[0];
-            //Assert
-            $this->assertEquals($test_client, $result);
+            $test_client1 = new Client($id1, $test_name, $test_stylist->getId());
+            $test_client1->save();
+
+            $test_client2 = new Client($id2, $test_name1, $test_stylist->getId());
+            $test_client2->save();
+
+            // Act
+            $result = $test_stylist->getClients();
+            // Assert
+            $this->assertEquals([$test_client1, $test_client2], $result);
         }
     }
 ?>

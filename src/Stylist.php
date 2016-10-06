@@ -21,6 +21,10 @@
         {
             return $this->id;
         }
+        function setId($new_id)
+        {
+            $this->id = $new_id;
+        }
 
         function save()
         {
@@ -67,15 +71,18 @@
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
 
-        function getClients(){
-            $all_clients = Client::getAll();
-            $found_clients = array();
-            foreach($all_clients as $client){
-                if($client->getStylistId() == $this->id){
-                    array_push($found_clients, $client);
-                }
+        function getClients()
+        {
+            $clients = array();
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
+            foreach($returned_clients as $client) {
+                $id = $client['id'];
+                $name = $client['name'];
+                $stylist_id = $client['stylist_id'];
+                $new_client = new Client($id, $name, $stylist_id);
+                array_push($clients, $new_client);
             }
-            return $found_clients;
+            return $clients;
         }
 
     }
