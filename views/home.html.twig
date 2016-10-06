@@ -6,37 +6,43 @@
     <title>Salon Manager</title>
   </head>
   <body>
-    <h1>Salon Manager<h1>
-    <h3>Stylists</h3>
-        {% if stylists is not empty %}
-            {% for stylist in stylists %}
+      <div class="container">
+            <div class="jumbotron">
+                <h1>Salon Manager<h1>
 
-                <li><a href="/stylist/{{ stylist.getId }}"><h3>{{ stylist.getName}}</h3></a></li>
+            </div>
+            <div class = "well">
+                    <h2> Add New Stylist </h2>
+                    <form action='/' method='post'>
+                        <label for='stylist'>Add New Stylist:</label>
+                        <input type='text' type="text" name="name" value="">
+                        <button type='submit'>Submit</button>
+                    </form>
+            </div>
+            
+                <div class = "well">
+                    {% if stylists is not empty %}
+                        {% for stylist in stylists %}
+                            <h2>Stylists</h2>
+                            <li><a href="/stylist/{{ stylist.getId }}"><h3>{{ stylist.getName}}</h3></a></li>
 
-                <form class="delete" action="/delete/{{stylist.id}}" method="post">
-                    <input name="_method" type="hidden" value="delete">
-                    <button class="btn btn-danger delete" type="submit" name="button">Delete </button>
-                </form>
+                            <form class="delete" action="/delete/{{stylist.id}}" method="post">
+                                <input name="_method" type="hidden" value="delete">
+                                <button class="btn btn-danger delete" type="submit" name="button">Delete </button>
+                            </form>
 
-                <form class="edit" action="/{{stylist.id}}/edit" method="post">
-                    <input name="stylist" type="hidden" value="{{stylist.id}}">
-                    <input name="_method" type="hidden" value="patch">
-                    <input class="form" type="hidden" name="stylist_id" value={{stylist.id}}>
-                    <div><label for="">Edit Stylist Name</label>
-                    <input class="form" type="text" name="name" value=""></br>
-                    <button class="form btn btn-success" type="submit" name="button">Submit Edit</button>
-                </form>
-            {% endfor %}
-        {% endif %}
+                            <form class="edit" action="/{{stylist.id}}/edit" method="post">
+                                <input name="stylist" type="hidden" value="{{stylist.id}}">
+                                <input name="_method" type="hidden" value="patch">
+                                <input class="form" type="hidden" name="stylist_id" value={{stylist.id}}>
+                                <label form="editstylist">Edit Stylist Name</label>
+                                <input class="form" type="text" name="name" value="">
+                                <button class="form btn btn-success" type="submit" name="button">Submit Edit</button>
+                            </form>
 
-
-                <h1> Add New Stylist </h1>
-                <form action='/' method='post'>
-                    <label for='stylist'>Add New Stylist:</label>
-                    <input type='text' type="text" name="name" value="">
-                    <button type='submit'>Submit</button>
-                </form>
-
-
+                        {% endfor %}
+                    {% endif %}
+                </div>
+        </div>
   </body>
 </html>

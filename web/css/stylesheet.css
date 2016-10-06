@@ -1,12 +1,14 @@
+.jumbotron{
+    text-align: center;
+}
+
 body{
 
-    background-color: 	skyblue;
+    background-color: grey;
 }
 h1{
     font-family: 'Indie Flower';
     color: black;
-    text-decoration: underline;
-
 }
 
 h2{
@@ -23,4 +25,12 @@ h3{
 h4{
 
     font-weight: bold;
+}
+
+.container {
+  margin-bottom: 60px;
+}
+
+a {
+    text-decoration: underline;
 }
