@@ -12,22 +12,22 @@ Must install composer in project directory to access the composer.json file and 
 
 ## Setup/Installation Requirements
 
-*_Clone this repository to your desktop_
-*_Run composer install from root_
-*_Navigate to the web folder and begin your local server (php -S localhost:8000)_
-*_Begin MAMP_
-*_Iinitialize new Database by doing the following:_
-*_Begin MySql Shell by running $ /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot_
-*_CREATE DATABASE hair_salon;_
-*_USE hair_salon;_
-*_CREATE TABLE stylists(id serial PRIMARY KEY, name VARCHAR(255));_
-*_CREATE TABLE clients(id, serial PRIMARY KEY, name VARCHAR(255));_
-*_Alternatively, unzip the database contained at the top level of this folder and import from phpmyadmin;_ (http://localhost:8888/phpmyadmin/)_
-*_in phpmyadmin, you may also have to create another database for use with phpunit tests files by going to Operations>;_ *Copy Database To> and remaning database "hair_salon_test" and choosing "structure only"_
+* _Clone this repository to your desktop_
+* _Run composer install from root_
+* _Navigate to the web folder and begin your local server (php -S localhost:8000)_
+* _Begin MAMP_
+* _Iinitialize new Database by doing the following:_
+* _Begin MySql Shell by running $ /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot_
+* _CREATE DATABASE hair_salon;_
+* _USE hair_salon;_
+* _CREATE TABLE stylists(id serial PRIMARY KEY, name VARCHAR(255));_
+* _CREATE TABLE clients(id, serial PRIMARY KEY, name VARCHAR(255));_
+* _Alternatively, unzip the database contained at the top level of this folder and import from phpmyadmin;_ (http://localhost:8888/phpmyadmin/_
+* _in phpmyadmin, you may also have to create another database for use with phpunit tests files by going to Operations>;_
+* _Copy Database To> and remaning database "hair_salon_test" and choosing "structure only"_
+* _Change localhost routing in app.php (and php documents in tests folder) to localhost enabled for mySQL.  _mysql:...host=localhost:8889;dbname=....in MAMP, you can find this by going to MAMP > Preferences > Ports> MySql Port_
 
-*_Change localhost routing in app.php (and php documents in tests folder) to localhost enabled for mySQL.  *_mysql:...host=localhost:8889;dbname=....in MAMP, you can find this by going to MAMP > Preferences > Ports> MySql Port_
+* _In terminal, navigate to_
+* _Open Browser and navigate to http://localhost:8000_
 
-*_In terminal, navigate to _
-*_Open Browser and navigate to http://localhost:8000_
-
-*_Copyright (c) 2016 Evan Stewart This software is licensed under the MIT license_
+Copyright (c) 2016 Evan Stewart This software is licensed under the MIT license_
